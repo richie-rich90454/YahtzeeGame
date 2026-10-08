@@ -14,25 +14,26 @@ public class Main{
                 System.out.print("Please enter either yes or no: ");
             }
             if (userRerollChoice.equals("yes")){
-//                for (int i=1;i<=2;i++){
-//
-//                }
-                System.out.print("Please enter the index of the dice that you want to reroll (between 1 and 3 inclusive): ");
-                int userRerollIndex=input.nextInt()-1;
-                while (!userPlayer.rollDice(userRerollIndex)){
-                    System.out.print("Please enter an index between 1 and 3 inclusive: ");
-                    userRerollIndex=input.nextInt()-1;
+                for (int i=1;i<=2;i++){
+                    System.out.print("Please enter the index of the dice that you want to reroll (between 1 and 3 inclusive): ");
+                    int userRerollIndex=input.nextInt()-1;
+                    while (!userPlayer.rollDice(userRerollIndex)){
+                        System.out.print("Please enter an index between 1 and 3 inclusive: ");
+                        userRerollIndex=input.nextInt()-1;
+                    }
+                    System.out.println("The new rolled value is: "+userPlayer.getParticularDiceValue(userRerollIndex));
+                    input.nextLine();
+                    if (i==1){
+                        System.out.print("Do you still want a reroll (enter yes or no)? ");
+                        userRerollChoice=input.nextLine().toLowerCase();
+                        while (!(userRerollChoice.equals("yes")||userRerollChoice.equals("no"))){
+                            System.out.print("Please enter either yes or no: ");
+                        }
+                        if (userRerollChoice.equals("no")){
+                            break;
+                        }
+                    }
                 }
-                System.out.println("The new rolled value is: "+userPlayer.getParticularDiceValue(userRerollIndex));
-                input.nextLine();
-                System.out.print("Please enter the index of the dice that you want to reroll (between 1 and 3 inclusive): ");
-                userRerollIndex=input.nextInt()-1;
-                while (!userPlayer.rollDice(userRerollIndex)){
-                    System.out.print("Please enter an index between 1 and 3 inclusive: ");
-                    userRerollIndex=input.nextInt()-1;
-                }
-                System.out.println("The new rolled value is: "+userPlayer.getParticularDiceValue(userRerollIndex));
-                input.nextLine();
             }
             System.out.println(userPlayer.addScoresForRound()+"\n\n\n");
         }
