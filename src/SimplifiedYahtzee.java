@@ -67,7 +67,7 @@ public class SimplifiedYahtzee {
     }
     public static void printCharacterByCharacterWithNewLine(String characters){
         printCharacterByCharacter(characters);
-        System.out.print('\n');
+        System.out.println();
     }
     //reference: https://stackoverflow.com/questions/33019295/want-to-print-text-char-by-char-for-my-textbased-game-but-it-prints-out-the-who
     public static void printCharacterByCharacter(String characters){
