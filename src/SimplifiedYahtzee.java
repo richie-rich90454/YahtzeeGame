@@ -11,9 +11,6 @@ public class SimplifiedYahtzee {
     public void setUserScore(int userScore){
         this.userScore=userScore;
     }
-    public int[] getDiceRollsHandler() {
-        return diceRollsCurrent;
-    }
     public void rollAllDice(){
         diceRollsCurrent=new int[3];
         rollDice(0);
