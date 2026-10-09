@@ -13,15 +13,24 @@ public class SimplifiedYahtzee {
     }
     public void rollAllDice(){
         diceRollsCurrent=new int[3];
-        rollDice("0");
-        rollDice("1");
-        rollDice("2");
+        rollDice(0);
+        rollDice(1);
+        rollDice(2);
+    }
+    public boolean rollDice(int diceIndex){
+        if (diceIndex>=0&&diceIndex<=2){
+            diceRollsCurrent[diceIndex]=(int)(Math.random()*6)+1;
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     public boolean rollDice(String diceIndexString){
         int diceIndex=-1;
         //reference: https://stackoverflow.com/questions/35250163/what-happens-to-a-int-i-integer-parseintstring-when-there-are-no-integers-in
         try{
-            diceIndex=Integer.parseInt(diceIndexString);
+            diceIndex=Integer.parseInt(diceIndexString)-1;
         }
         catch(NumberFormatException exception){
             return false;
