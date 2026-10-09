@@ -1,5 +1,3 @@
-import java.io.PrintWriter;
-
 public class SimplifiedYahtzee {
     private int[] diceRollsCurrent;
     private int userScore;
