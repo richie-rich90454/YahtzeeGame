@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class Main{
     public static void main(String[] args){
         Scanner input=new Scanner(System.in);
-        GamePlayer userPlayer=new GamePlayer();
+        SimplifiedYahtzee userPlayer=new SimplifiedYahtzee();
         for (int round=1;round<=6;round++){
             System.out.println("This is round "+round +" of the simplified Yahtzee game.");
             System.out.println("Your total score till this point is "+userPlayer.getuserScore());
@@ -12,6 +12,7 @@ public class Main{
             String userRerollChoice=input.nextLine().toLowerCase();
             while (!(userRerollChoice.equals("yes")||userRerollChoice.equals("no"))){
                 System.out.print("Please enter either yes or no: ");
+                userRerollChoice=input.nextLine().toLowerCase();
             }
             if (userRerollChoice.equals("yes")){
                 for (int i=1;i<=2;i++){
@@ -28,6 +29,7 @@ public class Main{
                         userRerollChoice=input.nextLine().toLowerCase();
                         while (!(userRerollChoice.equals("yes")||userRerollChoice.equals("no"))){
                             System.out.print("Please enter either yes or no: ");
+                            userRerollChoice=input.nextLine().toLowerCase();
                         }
                         if (userRerollChoice.equals("no")){
                             break;
