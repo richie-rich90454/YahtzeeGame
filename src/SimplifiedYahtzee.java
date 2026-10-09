@@ -21,7 +21,7 @@ public class SimplifiedYahtzee {
         int diceIndex=-1;
         //reference: https://stackoverflow.com/questions/35250163/what-happens-to-a-int-i-integer-parseintstring-when-there-are-no-integers-in
         try{
-            diceIndex=Integer.parseInt(diceIndexString)+1;
+            diceIndex=Integer.parseInt(diceIndexString);
         }
         catch(NumberFormatException exception){
             return false;
@@ -54,18 +54,22 @@ public class SimplifiedYahtzee {
     public int getParticularDiceValue(int diceIndex){
         return diceRollsCurrent[diceIndex];
     }
-    //reference: https://stackoverflow.com/questions/38395033/java-print-character-by-character
     public static void printCharacterByCharacterWithNewLine(String characters){
         printCharacterByCharacter(characters);
         System.out.print('\n');
     }
+    //reference: https://stackoverflow.com/questions/33019295/want-to-print-text-char-by-char-for-my-textbased-game-but-it-prints-out-the-who
     public static void printCharacterByCharacter(String characters){
-        for (int i=0;i<characters.length();i++){
-            long startTime=System.currentTimeMillis();
-            while (System.currentTimeMillis()-startTime<10){
-
+        for (char currentCharacter: characters.toCharArray()){
+            System.out.print(currentCharacter);
+            System.out.flush();
+            try{
+                Thread.sleep(10);
             }
-            System.out.print(characters.charAt(i));
+            catch (InterruptedException exception){
+                Thread.currentThread().interrupt();
+                return;
+            }
         }
     }
 }
