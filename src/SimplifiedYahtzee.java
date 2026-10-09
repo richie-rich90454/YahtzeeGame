@@ -5,7 +5,7 @@ public class SimplifiedYahtzee {
         userScore=0;
         diceRollsCurrent=new int[3];
     }
-    public int getuserScore(){
+    public int getUserScore(){
         return userScore;
     }
     public void setUserScore(int userScore){

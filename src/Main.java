@@ -5,7 +5,7 @@ public class Main{
         SimplifiedYahtzee userPlayer=new SimplifiedYahtzee();
         for (int round=1;round<=6;round++){
             SimplifiedYahtzee.printCharacterByCharacterWithNewLine("This is round "+round +" of the simplified Yahtzee game.");
-            SimplifiedYahtzee.printCharacterByCharacterWithNewLine("Your total score till this point is "+userPlayer.getuserScore());
+            SimplifiedYahtzee.printCharacterByCharacterWithNewLine("Your total score till this point is "+userPlayer.getUserScore());
             userPlayer.rollAllDice();
             SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The three dice roll results you have this round are "+userPlayer.getAllDice());
             SimplifiedYahtzee.printCharacterByCharacter("Do you want to reroll (enter yes or no; you have two chances of reroll if you enter yes)? ");
@@ -39,6 +39,6 @@ public class Main{
             }
             SimplifiedYahtzee.printCharacterByCharacterWithNewLine(userPlayer.addScoresForRound()+"\n\n\n");
         }
-        SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The game ended, and your final score is "+userPlayer.getuserScore());
+        SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The game ended, and your final score is "+userPlayer.getUserScore());
     }
 }
