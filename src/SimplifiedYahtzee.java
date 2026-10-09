@@ -1,3 +1,5 @@
+import java.io.PrintWriter;
+
 public class SimplifiedYahtzee {
     private int[] diceRollsCurrent;
     private int userScore;
@@ -45,5 +47,25 @@ public class SimplifiedYahtzee {
     }
     public int getParticularDiceValue(int diceIndex){
         return diceRollsCurrent[diceIndex];
+    }
+    //reference: https://stackoverflow.com/questions/38395033/java-print-character-by-character
+    public static void printCharacterByCharacterWithNewLine(String characters){
+        for (int i=0;i<characters.length();i++){
+            long startTime=System.currentTimeMillis();
+            while (System.currentTimeMillis()-startTime<10){
+
+            }
+            System.out.print(characters.charAt(i));
+        }
+        System.out.print('\n');
+    }
+    public static void printCharacterByCharacter(String characters){
+        for (int i=0;i<characters.length();i++){
+            long startTime=System.currentTimeMillis();
+            while (System.currentTimeMillis()-startTime<10){
+
+            }
+            System.out.print(characters.charAt(i));
+        }
     }
 }
