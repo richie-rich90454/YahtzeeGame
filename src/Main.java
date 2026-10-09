@@ -1,3 +1,4 @@
+import java.text.ParseException;
 import java.util.Scanner;
 public class Main{
     public static void main(String[] args){
@@ -17,10 +18,10 @@ public class Main{
             if (userRerollChoice.equals("yes")){
                 for (int i=1;i<=2;i++){
                     SimplifiedYahtzee.printCharacterByCharacter("Please enter the index of the dice that you want to reroll (between 1 and 3 inclusive): ");
-                    int userRerollIndex=input.nextInt()-1;
+                    String userRerollIndex=input.nextLine().toLowerCase().trim();
                     while (!userPlayer.rollDice(userRerollIndex)){
                         SimplifiedYahtzee.printCharacterByCharacter("Please enter an index between 1 and 3 inclusive: ");
-                        userRerollIndex=input.nextInt()-1;
+                        userRerollIndex=input.nextLine().toLowerCase().trim();
                     }
                     SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The new rolled value is: "+userPlayer.getParticularDiceValue(userRerollIndex));
                     input.nextLine();
