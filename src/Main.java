@@ -1,4 +1,3 @@
-import java.text.ParseException;
 import java.util.Scanner;
 public class Main{
     public static void main(String[] args){
@@ -20,7 +19,7 @@ public class Main{
                     SimplifiedYahtzee.printCharacterByCharacter("Please enter the index of the dice that you want to reroll (between 1 and 3 inclusive): ");
                     String userRerollIndex=input.nextLine().toLowerCase().trim();
                     while (!userPlayer.rollDice(userRerollIndex)){
-                        SimplifiedYahtzee.printCharacterByCharacter("Please enter an index between 1 and 3 inclusive: ");
+                        SimplifiedYahtzee.printCharacterByCharacter("Please enter a valid index between 1 and 3 inclusive: ");
                         userRerollIndex=input.nextLine().toLowerCase().trim();
                     }
                     SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The new rolled value is: "+userPlayer.getParticularDiceValue(Integer.parseInt(userRerollIndex)));//since it would definitely be an integer by this point that is valid there is no risk of runtime error here

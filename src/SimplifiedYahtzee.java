@@ -21,7 +21,7 @@ public class SimplifiedYahtzee {
         int diceIndex=-1;
         //reference: https://stackoverflow.com/questions/35250163/what-happens-to-a-int-i-integer-parseintstring-when-there-are-no-integers-in
         try{
-            diceIndex=Integer.parseInt(diceIndexString);
+            diceIndex=Integer.parseInt(diceIndexString)+1;
         }
         catch(NumberFormatException exception){
             return false;
