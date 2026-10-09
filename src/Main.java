@@ -9,10 +9,10 @@ public class Main{
             userPlayer.rollAllDice();
             SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The three dice roll results you have this round are "+userPlayer.getAllDice());
             SimplifiedYahtzee.printCharacterByCharacter("Do you want to reroll (enter yes or no; you have two chances of reroll if you enter yes)? ");
-            String userRerollChoice=input.nextLine().toLowerCase();
+            String userRerollChoice=input.nextLine().toLowerCase().trim();
             while (!(userRerollChoice.equals("yes")||userRerollChoice.equals("no"))){
                 SimplifiedYahtzee.printCharacterByCharacter("Please enter either yes or no: ");
-                userRerollChoice=input.nextLine().toLowerCase();
+                userRerollChoice=input.nextLine().toLowerCase().trim();
             }
             if (userRerollChoice.equals("yes")){
                 for (int i=1;i<=2;i++){
@@ -26,10 +26,10 @@ public class Main{
                     input.nextLine();
                     if (i==1){
                         SimplifiedYahtzee.printCharacterByCharacter("Do you still want a reroll (enter yes or no)? ");
-                        userRerollChoice=input.nextLine().toLowerCase();
+                        userRerollChoice=input.nextLine().toLowerCase().trim();
                         while (!(userRerollChoice.equals("yes")||userRerollChoice.equals("no"))){
                             SimplifiedYahtzee.printCharacterByCharacter("Please enter either yes or no: ");
-                            userRerollChoice=input.nextLine().toLowerCase();
+                            userRerollChoice=input.nextLine().toLowerCase().trim();
                         }
                         if (userRerollChoice.equals("no")){
                             break;

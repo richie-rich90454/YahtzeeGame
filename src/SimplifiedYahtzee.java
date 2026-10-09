@@ -17,6 +17,7 @@ public class SimplifiedYahtzee {
         rollDice(1);
         rollDice(2);
     }
+    //starting from 0 and ending at 2
     public boolean rollDice(int diceIndex){
         if (diceIndex>=0&&diceIndex<=2){
             diceRollsCurrent[diceIndex]=(int)(Math.random()*6)+1;
@@ -26,6 +27,7 @@ public class SimplifiedYahtzee {
             return false;
         }
     }
+    //starting from 1 and ending at three
     public boolean rollDice(String diceIndexString){
         int diceIndex=-1;
         //reference: https://stackoverflow.com/questions/35250163/what-happens-to-a-int-i-integer-parseintstring-when-there-are-no-integers-in
