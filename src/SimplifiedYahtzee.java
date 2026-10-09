@@ -1,9 +1,9 @@
 public class SimplifiedYahtzee {
-    private DiceRollsHandler diceRollsHandler;
+    private int[] diceRollsCurrent;
     private int userScore;
     public SimplifiedYahtzee(){
         userScore=0;
-        diceRollsHandler=new DiceRollsHandler();
+        diceRollsCurrent=new int[3];
     }
     public int getuserScore(){
         return userScore;
@@ -11,35 +11,42 @@ public class SimplifiedYahtzee {
     public void setUserScore(int userScore){
         this.userScore=userScore;
     }
-    public DiceRollsHandler getDiceRollsHandler() {
-        return diceRollsHandler;
+    public int[] getDiceRollsHandler() {
+        return diceRollsCurrent;
     }
     public void rollAllDice(){
-        diceRollsHandler.clearDiceRolls();
-        diceRollsHandler.rollAllDice();
-    }
-    public String getAllDice(){
-        return (diceRollsHandler.getPerRoundRolls())[0]+", "+(diceRollsHandler.getPerRoundRolls())[1]+", "+(diceRollsHandler.getPerRoundRolls())[2];
+        diceRollsCurrent=new int[3];
+        rollDice(0);
+        rollDice(1);
+        rollDice(2);
     }
     public boolean rollDice(int diceIndex){
-        return diceRollsHandler.rollDice(diceIndex);
-    }
-    public String addScoresForRound(){
-        int[] diceRolls=diceRollsHandler.getPerRoundRolls();
-        if (diceRolls[0]==diceRolls[1]&&diceRolls[1]==diceRolls[2]){
-            setUserScore(userScore+diceRolls[0]+diceRolls[1]+diceRolls[2]+20);
-            return "All rolls are the same value, so you earn a score of "+(diceRolls[0]+diceRolls[1]+diceRolls[2]+20)+" (the sum of all dice values and a 20 bonus added on top of it).";
-        }
-        else if (diceRolls[0]==diceRolls[1]||diceRolls[1]==diceRolls[2]||diceRolls[0]==diceRolls[2]){
-            setUserScore(userScore+diceRolls[0]+diceRolls[1]+diceRolls[2]);
-            return "Two rolls are the same value, so you earn a score of "+(diceRolls[0]+diceRolls[1]+diceRolls[2])+" (the sum of all dice values).";
+        if (diceIndex>=0&&diceIndex<=2){
+            diceRollsCurrent[diceIndex]=(int)(Math.random()*6)+1;
+            return true;
         }
         else{
-            setUserScore(userScore+Math.max(Math.max(diceRolls[0],diceRolls[1]), diceRolls[2]));
-            return "No dices match, so you earn a score of "+(Math.max(Math.max(diceRolls[0],diceRolls[1]), diceRolls[2]))+" (the maximum value of the three dices).";
+            return false;
+        }
+    }
+    public String getAllDice(){
+        return (diceRollsCurrent[0]+", "+diceRollsCurrent[1]+", "+diceRollsCurrent[2]);
+    }
+    public String addScoresForRound(){
+        if (diceRollsCurrent[0]==diceRollsCurrent[1]&&diceRollsCurrent[1]==diceRollsCurrent[2]){
+            setUserScore(userScore+diceRollsCurrent[0]+diceRollsCurrent[1]+diceRollsCurrent[2]+20);
+            return "All rolls are the same value, so you earn a score of "+(diceRollsCurrent[0]+diceRollsCurrent[1]+diceRollsCurrent[2]+20)+" (the sum of all dice values and a 20 bonus added on top of it).";
+        }
+        else if (diceRollsCurrent[0]==diceRollsCurrent[1]||diceRollsCurrent[1]==diceRollsCurrent[2]||diceRollsCurrent[0]==diceRollsCurrent[2]){
+            setUserScore(userScore+diceRollsCurrent[0]+diceRollsCurrent[1]+diceRollsCurrent[2]);
+            return "Two rolls are the same value, so you earn a score of "+(diceRollsCurrent[0]+diceRollsCurrent[1]+diceRollsCurrent[2])+" (the sum of all dice values).";
+        }
+        else{
+            setUserScore(userScore+Math.max(Math.max(diceRollsCurrent[0],diceRollsCurrent[1]), diceRollsCurrent[2]));
+            return "No dices match, so you earn a score of "+(Math.max(Math.max(diceRollsCurrent[0],diceRollsCurrent[1]), diceRollsCurrent[2]))+" (the maximum value of the three dices).";
         }
     }
     public int getParticularDiceValue(int diceIndex){
-        return diceRollsHandler.getParticularDiceValue(diceIndex);
+        return diceRollsCurrent[diceIndex];
     }
 }
