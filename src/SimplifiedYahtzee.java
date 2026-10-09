@@ -56,13 +56,7 @@ public class SimplifiedYahtzee {
     }
     //reference: https://stackoverflow.com/questions/38395033/java-print-character-by-character
     public static void printCharacterByCharacterWithNewLine(String characters){
-        for (int i=0;i<characters.length();i++){
-            long startTime=System.currentTimeMillis();
-            while (System.currentTimeMillis()-startTime<10){
-
-            }
-            System.out.print(characters.charAt(i));
-        }
+        printCharacterByCharacter(characters);
         System.out.print('\n');
     }
     public static void printCharacterByCharacter(String characters){
