@@ -24,7 +24,7 @@ public class SimplifiedYahtzee {
         rollDice(2);
         rollDice(3);
     }
-    //starting from 0 and ending at 2
+    //starting from 1 and ending at 3
     public boolean rollDice(int diceIndex){
         diceIndex--;
         if (diceIndex>=0&&diceIndex<=2){
