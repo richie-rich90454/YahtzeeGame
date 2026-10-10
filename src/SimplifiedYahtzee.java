@@ -35,23 +35,17 @@ public class SimplifiedYahtzee {
             return false;
         }
     }
-    //starting from 1 and ending at three
+    //starting from 1 and ending at 3
     public boolean rollDice(String diceIndexString){
         int diceIndex=-1;
         //reference: https://stackoverflow.com/questions/35250163/what-happens-to-a-int-i-integer-parseintstring-when-there-are-no-integers-in
         try{
-            diceIndex=Integer.parseInt(diceIndexString)-1;
+            diceIndex=Integer.parseInt(diceIndexString);
         }
         catch(NumberFormatException exception){
             return false;
         }
-        if (diceIndex>=0&&diceIndex<=2){
-            diceRollsCurrent[diceIndex]=(int)(Math.random()*6)+1;
-            return true;
-        }
-        else{
-            return false;
-        }
+        return rollDice(diceIndex);
     }
     public String getAllDice(){
         return (diceRollsCurrent[0]+", "+diceRollsCurrent[1]+", "+diceRollsCurrent[2]);
