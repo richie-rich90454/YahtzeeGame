@@ -111,7 +111,7 @@ public class SimplifiedYahtzee {
         SimplifiedYahtzee.printCharacterByCharacterWithNewLine("Your total score till this point is "+userPlayer.getUserScore());
         userPlayer.rollAllDice();
         SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The three dice roll results you have this round are "+userPlayer.getAllDice());
-        SimplifiedYahtzee.printCharacterByCharacter("Do you want to reroll (enter yes or no; you have two chances of reroll if you enter yes)? ");
+        SimplifiedYahtzee.printCharacterByCharacter("Do you want to re-roll (enter yes or no; you have two chances of re-roll if you enter yes)? ");
         String userRerollChoice=input.nextLine().toLowerCase().trim();
         while (!(userRerollChoice.equals("yes")||userRerollChoice.equals("no"))){
             SimplifiedYahtzee.printCharacterByCharacter("Please enter either yes or no: ");
@@ -119,7 +119,7 @@ public class SimplifiedYahtzee {
         }
         if (userRerollChoice.equals("yes")){
             for (int i=1;i<=2;i++){
-                SimplifiedYahtzee.printCharacterByCharacter("Please enter the index of the dice that you want to reroll (between 1 and 3 inclusive): ");
+                SimplifiedYahtzee.printCharacterByCharacter("Please enter the index of the dice that you want to re-roll (between 1 and 3 inclusive): ");
                 String userRerollIndex=input.nextLine().toLowerCase().trim();
                 while (!userPlayer.rollDice(userRerollIndex)){
                     SimplifiedYahtzee.printCharacterByCharacter("Please enter a valid index between 1 and 3 inclusive: ");
@@ -128,7 +128,7 @@ public class SimplifiedYahtzee {
                 SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The new rolled value is: "+userPlayer.getParticularDiceValue(Integer.parseInt(userRerollIndex)-1));//since it would definitely be an integer by this point that is valid there is no risk of runtime error here
                 SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The three dice roll results you have this round are "+userPlayer.getAllDice());
                 if (i==1){
-                    SimplifiedYahtzee.printCharacterByCharacter("Do you still want a reroll (enter yes or no)? ");
+                    SimplifiedYahtzee.printCharacterByCharacter("Do you still want a re-roll (enter yes or no)? ");
                     userRerollChoice=input.nextLine().toLowerCase().trim();
                     while (!(userRerollChoice.equals("yes")||userRerollChoice.equals("no"))){
                         SimplifiedYahtzee.printCharacterByCharacter("Please enter either yes or no: ");
