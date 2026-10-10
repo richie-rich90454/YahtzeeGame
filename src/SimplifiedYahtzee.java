@@ -81,7 +81,7 @@ public class SimplifiedYahtzee {
                 bestRound=round;
                 bestRoundScore=currentRoundScore;
             }
-            return "No dices match, so you earn a score of "+(Math.max(Math.max(diceRollsCurrent[0],diceRollsCurrent[1]), diceRollsCurrent[2]))+" (the maximum value of the three dices).";
+            return "No dice match, so you earn a score of "+(Math.max(Math.max(diceRollsCurrent[0],diceRollsCurrent[1]), diceRollsCurrent[2]))+" (the maximum value of the three dice).";
         }
     }
     public int getParticularDiceValue(int diceIndex){
