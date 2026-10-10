@@ -59,7 +59,7 @@ public class SimplifiedYahtzee {
         if (diceRollsCurrent[0]==diceRollsCurrent[1]&&diceRollsCurrent[1]==diceRollsCurrent[2]){
             int currentRoundScore=diceRollsCurrent[0]+diceRollsCurrent[1]+diceRollsCurrent[2]+20;
             setUserScore(userScore+diceRollsCurrent[0]+diceRollsCurrent[1]+diceRollsCurrent[2]+20);
-            if (currentRoundScore>bestRoundScore){
+            if (currentRoundScore>=bestRoundScore){
                 bestRound=round;
                 bestRoundScore=currentRoundScore;
             }
@@ -68,7 +68,7 @@ public class SimplifiedYahtzee {
         else if (diceRollsCurrent[0]==diceRollsCurrent[1]||diceRollsCurrent[1]==diceRollsCurrent[2]||diceRollsCurrent[0]==diceRollsCurrent[2]){
             int currentRoundScore=diceRollsCurrent[0]+diceRollsCurrent[1]+diceRollsCurrent[2];
             setUserScore(userScore+diceRollsCurrent[0]+diceRollsCurrent[1]+diceRollsCurrent[2]);
-            if (currentRoundScore>bestRoundScore){
+            if (currentRoundScore>=bestRoundScore){
                 bestRound=round;
                 bestRoundScore=currentRoundScore;
             }
