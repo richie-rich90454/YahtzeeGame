@@ -4,10 +4,12 @@ public class SimplifiedYahtzee {
     private int[] diceRollsCurrent;
     private int userScore;
     private int bestRound;
+    private int bestRoundScore;
     public SimplifiedYahtzee(){
         userScore=0;
         diceRollsCurrent=new int[3];
         bestRound=1;
+        bestRoundScore=-1;
     }
     public int getUserScore(){
         return userScore;
@@ -17,6 +19,9 @@ public class SimplifiedYahtzee {
     }
     public int getBestRound(){
         return bestRound;
+    }
+    public int getBestRoundScore(){
+        return bestRoundScore;
     }
     public void rollAllDice(){
         diceRollsCurrent=new int[3];
@@ -50,17 +55,32 @@ public class SimplifiedYahtzee {
     public String getAllDice(){
         return (diceRollsCurrent[0]+", "+diceRollsCurrent[1]+", "+diceRollsCurrent[2]);
     }
-    public String addScoresForRound(){
+    public String addScoresForRound(int round){
         if (diceRollsCurrent[0]==diceRollsCurrent[1]&&diceRollsCurrent[1]==diceRollsCurrent[2]){
+            int currentRoundScore=diceRollsCurrent[0]+diceRollsCurrent[1]+diceRollsCurrent[2]+20;
             setUserScore(userScore+diceRollsCurrent[0]+diceRollsCurrent[1]+diceRollsCurrent[2]+20);
+            if (currentRoundScore>bestRoundScore){
+                bestRound=round;
+                bestRoundScore=currentRoundScore;
+            }
             return "All rolls are the same value, so you earn a score of "+(diceRollsCurrent[0]+diceRollsCurrent[1]+diceRollsCurrent[2]+20)+" (the sum of all dice values and a 20 bonus added on top of it).";
         }
         else if (diceRollsCurrent[0]==diceRollsCurrent[1]||diceRollsCurrent[1]==diceRollsCurrent[2]||diceRollsCurrent[0]==diceRollsCurrent[2]){
+            int currentRoundScore=diceRollsCurrent[0]+diceRollsCurrent[1]+diceRollsCurrent[2];
             setUserScore(userScore+diceRollsCurrent[0]+diceRollsCurrent[1]+diceRollsCurrent[2]);
+            if (currentRoundScore>bestRoundScore){
+                bestRound=round;
+                bestRoundScore=currentRoundScore;
+            }
             return "Two rolls are the same value, so you earn a score of "+(diceRollsCurrent[0]+diceRollsCurrent[1]+diceRollsCurrent[2])+" (the sum of all dice values).";
         }
         else{
+            int currentRoundScore=Math.max(Math.max(diceRollsCurrent[0],diceRollsCurrent[1]), diceRollsCurrent[2]);
             setUserScore(userScore+Math.max(Math.max(diceRollsCurrent[0],diceRollsCurrent[1]), diceRollsCurrent[2]));
+            if (currentRoundScore>=bestRoundScore){
+                bestRound=round;
+                bestRoundScore=currentRoundScore;
+            }
             return "No dices match, so you earn a score of "+(Math.max(Math.max(diceRollsCurrent[0],diceRollsCurrent[1]), diceRollsCurrent[2]))+" (the maximum value of the three dices).";
         }
     }
@@ -119,6 +139,6 @@ public class SimplifiedYahtzee {
                 }
             }
         }
-        SimplifiedYahtzee.printCharacterByCharacterWithNewLine(userPlayer.addScoresForRound()+"\n\n\n");
+        SimplifiedYahtzee.printCharacterByCharacterWithNewLine(userPlayer.addScoresForRound(round)+"\n\n\n");
     }
 }
