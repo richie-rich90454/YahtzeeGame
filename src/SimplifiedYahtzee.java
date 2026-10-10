@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
+//Game rules to full yahtzee game: https://officialgamerules.org/game-rules/yahtzee
 public class SimplifiedYahtzee {
     private int[] diceRollsCurrent;
     private int userScore;
@@ -106,6 +106,45 @@ public class SimplifiedYahtzee {
             }
         }
     }
+    public boolean validateDicesToReroll(String userDice, ArrayList<Integer> diceToKeep){
+        if (userDice.equals("")){
+            diceToKeep.clear();
+            return true;
+        }
+        try{
+            for (String currentDice: userDice.split(",")){
+                diceToKeep.add(Integer.parseInt(currentDice));
+                if (Integer.parseInt(currentDice)<=0||Integer.parseInt(currentDice)>3){
+                    diceToKeep.clear();
+                    return false;
+                }
+            }
+            if (diceToKeep.size()>3){
+                diceToKeep.clear();
+                return false;
+            }
+        }
+        catch (NumberFormatException exception){
+            diceToKeep.clear();
+            return false;
+        }
+        return true;
+    }
+    public void handleUserReroll(Scanner input){
+        SimplifiedYahtzee.printCharacterByCharacterWithNewLine("Please enter the dices that you aim to keep comma-separated with no spaces between characters (e.g. 1,2,3 if you want to keep all of them while directly pressing Enter would skip the reroll): ");
+        String userDice=input.nextLine().trim();
+        ArrayList<Integer> diceToKeep=new ArrayList<Integer>();
+        while (!validateDicesToReroll(userDice, diceToKeep)){
+            SimplifiedYahtzee.printCharacterByCharacterWithNewLine("Please enter the dices that you aim to keep comma-separated with no spaces between characters (e.g. 1,2,3 if you want to keep all of them while directly pressing Enter would skip the reroll): ");
+            userDice=input.nextLine().trim();
+        }
+        for (int i=1;i<=3;i++){
+            if (!diceToKeep.contains(i)){
+                rollDice(i);
+            }
+        }
+        SimplifiedYahtzee.printCharacterByCharacterWithNewLine("New set of dice: "+getAllDice());
+    }
     public void playRound(SimplifiedYahtzee userPlayer, Scanner input, int round, int playerNumber){
         SimplifiedYahtzee.printCharacterByCharacterWithNewLine("This is round "+round +" of the simplified Yahtzee game for player "+playerNumber+".");
         SimplifiedYahtzee.printCharacterByCharacterWithNewLine("Your total score till this point is "+userPlayer.getUserScore());
@@ -119,14 +158,15 @@ public class SimplifiedYahtzee {
         }
         if (userRerollChoice.equals("yes")){
             for (int i=1;i<=2;i++){
-                SimplifiedYahtzee.printCharacterByCharacter("Please enter the index of the dice that you want to re-roll (between 1 and 3 inclusive): ");
-                String userRerollIndex=input.nextLine().toLowerCase().trim();
-                while (!userPlayer.rollDice(userRerollIndex)){
-                    SimplifiedYahtzee.printCharacterByCharacter("Please enter a valid index between 1 and 3 inclusive: ");
-                    userRerollIndex=input.nextLine().toLowerCase().trim();
-                }
-                SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The new rolled value is: "+userPlayer.getParticularDiceValue(Integer.parseInt(userRerollIndex)-1));//since it would definitely be an integer by this point that is valid there is no risk of runtime error here
-                SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The three dice roll results you have this round are "+userPlayer.getAllDice());
+                userPlayer.handleUserReroll(input);
+//                SimplifiedYahtzee.printCharacterByCharacter("Please enter the index of the dice that you want to re-roll (between 1 and 3 inclusive): ");
+//                String userRerollIndex=input.nextLine().toLowerCase().trim();
+//                while (!userPlayer.rollDice(userRerollIndex)){
+//                    SimplifiedYahtzee.printCharacterByCharacter("Please enter a valid index between 1 and 3 inclusive: ");
+//                    userRerollIndex=input.nextLine().toLowerCase().trim();
+//                }
+//                SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The new rolled value is: "+userPlayer.getParticularDiceValue(Integer.parseInt(userRerollIndex)-1));//since it would definitely be an integer by this point that is valid there is no risk of runtime error here
+//                SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The three dice roll results you have this round are "+userPlayer.getAllDice());
                 if (i==1){
                     SimplifiedYahtzee.printCharacterByCharacter("Do you still want a re-roll (enter yes or no)? ");
                     userRerollChoice=input.nextLine().toLowerCase().trim();
@@ -148,7 +188,7 @@ public class SimplifiedYahtzee {
         int winnerScore=-1;
         boolean isTie=false;
         for (int i=1;i<=playerCount;i++){
-            SimplifiedYahtzee.printCharacterByCharacterWithNewLine("Player "+i+": "+players[i].getUserScore()+" (best round is "+ players[i].getBestRound()+" with a score of "+players[i].getBestRoundScore()+" (note: if two or more rounds had the same score, the latest round is printed here)");
+            SimplifiedYahtzee.printCharacterByCharacterWithNewLine("Player "+i+": "+players[i].getUserScore()+" (best round is "+ players[i].getBestRound()+" with a score of "+players[i].getBestRoundScore()+")\tNote: if two or more rounds had the same score, the latest round is printed here");
             if (players[i].getUserScore()>=winnerScore){
                 if (!winners.isEmpty()){
                     isTie=true;
