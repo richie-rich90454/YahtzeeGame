@@ -128,11 +128,11 @@ public class SimplifiedYahtzee {
         return true;
     }
     public void handleUserReroll(Scanner input){
-        SimplifiedYahtzee.printCharacterByCharacterWithNewLine("Please enter the dices that you aim to keep comma-separated with no spaces between characters (e.g. 1,2,3 if you want to keep all of them while directly pressing Enter would skip the reroll): ");
+        SimplifiedYahtzee.printCharacterByCharacterWithNewLine("Please enter the dices that you aim to keep comma-separated with no spaces between characters (e.g. 1,2,3 if you want to keep all of them while directly pressing Enter would reroll all of them): ");
         String userDice=input.nextLine().trim();
         ArrayList<Integer> diceToKeep=new ArrayList<Integer>();
         while (!validateDicesToReroll(userDice, diceToKeep)){
-            SimplifiedYahtzee.printCharacterByCharacterWithNewLine("Please enter the dices that you aim to keep comma-separated with no spaces between characters (e.g. 1,2,3 if you want to keep all of them while directly pressing Enter would skip the reroll): ");
+            SimplifiedYahtzee.printCharacterByCharacterWithNewLine("Please enter the dices that you aim to keep comma-separated with no spaces between characters (e.g. 1,2,3 if you want to keep all of them while directly pressing Enter would reroll all of them): ");
             userDice=input.nextLine().trim();
         }
         for (int i=1;i<=3;i++){
