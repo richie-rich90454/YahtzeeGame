@@ -105,8 +105,8 @@ public class SimplifiedYahtzee {
             }
         }
     }
-    public void playRound(SimplifiedYahtzee userPlayer, Scanner input, int round){
-        SimplifiedYahtzee.printCharacterByCharacterWithNewLine("This is round "+round +" of the simplified Yahtzee game.");
+    public void playRound(SimplifiedYahtzee userPlayer, Scanner input, int round, int playerNumber){
+        SimplifiedYahtzee.printCharacterByCharacterWithNewLine("This is round "+round +" of the simplified Yahtzee game for player"+playerNumber+".");
         SimplifiedYahtzee.printCharacterByCharacterWithNewLine("Your total score till this point is "+userPlayer.getUserScore());
         userPlayer.rollAllDice();
         SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The three dice roll results you have this round are "+userPlayer.getAllDice());
