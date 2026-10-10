@@ -42,17 +42,17 @@ public class SimplifiedYahtzee {
         }
     }
     //starting from 1 and ending at 3
-    public boolean rollDice(String diceIndexString){
-        int diceIndex=-1;
-        //reference: https://stackoverflow.com/questions/35250163/what-happens-to-a-int-i-integer-parseintstring-when-there-are-no-integers-in
-        try{
-            diceIndex=Integer.parseInt(diceIndexString);
-        }
-        catch(NumberFormatException exception){
-            return false;
-        }
-        return rollDice(diceIndex);
-    }
+//    public boolean rollDice(String diceIndexString){
+//        int diceIndex=-1;
+//        //reference: https://stackoverflow.com/questions/35250163/what-happens-to-a-int-i-integer-parseintstring-when-there-are-no-integers-in
+//        try{
+//            diceIndex=Integer.parseInt(diceIndexString);
+//        }
+//        catch(NumberFormatException exception){
+//            return false;
+//        }
+//        return rollDice(diceIndex);
+//    }
     public String getAllDice(){
         return (diceRollsCurrent[0]+", "+diceRollsCurrent[1]+", "+diceRollsCurrent[2]);
     }
@@ -85,9 +85,9 @@ public class SimplifiedYahtzee {
             return "No dice match, so you earn a score of "+(Math.max(Math.max(diceRollsCurrent[0],diceRollsCurrent[1]), diceRollsCurrent[2]))+" (the maximum value of the three dice).";
         }
     }
-    public int getParticularDiceValue(int diceIndex){
-        return diceRollsCurrent[diceIndex];
-    }
+//    public int getParticularDiceValue(int diceIndex){
+//        return diceRollsCurrent[diceIndex];
+//    }
     public static void printCharacterByCharacterWithNewLine(String characters){
         printCharacterByCharacter(characters);
         System.out.println();
@@ -107,25 +107,22 @@ public class SimplifiedYahtzee {
         }
     }
     public boolean validateDicesToReroll(String userDice, ArrayList<Integer> diceToKeep){
+        diceToKeep.clear();
         if (userDice.equals("")){
-            diceToKeep.clear();
             return true;
         }
         try{
             for (String currentDice: userDice.split(",")){
                 diceToKeep.add(Integer.parseInt(currentDice));
                 if (Integer.parseInt(currentDice)<=0||Integer.parseInt(currentDice)>3){
-                    diceToKeep.clear();
                     return false;
                 }
             }
             if (diceToKeep.size()>3){
-                diceToKeep.clear();
                 return false;
             }
         }
         catch (NumberFormatException exception){
-            diceToKeep.clear();
             return false;
         }
         return true;
