@@ -55,7 +55,7 @@ public class Main{
                     SimplifiedYahtzee.printCharacterByCharacter(", ");
                 }
             }
-            SimplifiedYahtzee.printCharacterByCharacter(" all with a score of "+players[winners.get(0)].getUserScore());
+            SimplifiedYahtzee.printCharacterByCharacterWithNewLine(" all with a score of "+players[winners.get(0)].getUserScore());
         }
         else{
             SimplifiedYahtzee.printCharacterByCharacterWithNewLine("\nThe winner is player "+winners.get(0)+" with a score of "+players[winners.get(0)].getUserScore());

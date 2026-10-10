@@ -141,4 +141,7 @@ public class SimplifiedYahtzee {
         }
         SimplifiedYahtzee.printCharacterByCharacterWithNewLine(userPlayer.addScoresForRound(round)+"\n\n\n");
     }
+    public static void calculateWinner(){
+
+    }
 }
