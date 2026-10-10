@@ -23,6 +23,7 @@ public class Main{
                         userRerollIndex=input.nextLine().toLowerCase().trim();
                     }
                     SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The new rolled value is: "+userPlayer.getParticularDiceValue(Integer.parseInt(userRerollIndex)-1));//since it would definitely be an integer by this point that is valid there is no risk of runtime error here
+                    SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The three dice roll results you have this round are "+userPlayer.getAllDice());
                     if (i==1){
                         SimplifiedYahtzee.printCharacterByCharacter("Do you still want a reroll (enter yes or no)? ");
                         userRerollChoice=input.nextLine().toLowerCase().trim();
