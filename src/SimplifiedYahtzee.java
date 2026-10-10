@@ -3,9 +3,11 @@ import java.util.Scanner;
 public class SimplifiedYahtzee {
     private int[] diceRollsCurrent;
     private int userScore;
+    private int bestRound;
     public SimplifiedYahtzee(){
         userScore=0;
         diceRollsCurrent=new int[3];
+        bestRound=1;
     }
     public int getUserScore(){
         return userScore;
@@ -13,14 +15,18 @@ public class SimplifiedYahtzee {
     public void setUserScore(int userScore){
         this.userScore=userScore;
     }
+    public int getBestRound(){
+        return bestRound;
+    }
     public void rollAllDice(){
         diceRollsCurrent=new int[3];
-        rollDice(0);
         rollDice(1);
         rollDice(2);
+        rollDice(3);
     }
     //starting from 0 and ending at 2
     public boolean rollDice(int diceIndex){
+        diceIndex--;
         if (diceIndex>=0&&diceIndex<=2){
             diceRollsCurrent[diceIndex]=(int)(Math.random()*6)+1;
             return true;
