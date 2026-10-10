@@ -1,3 +1,8 @@
+/*
+    The Main class of the overall project that has the entrypoint main function that is the entrypoint for user input, creating SimplifiedYahtzee objects, and calling instance methods from those objects or static methods from the SimplifiedYahtzee class to make the game able to start and be functional along with some input handling built in
+    By Richard Jiang
+    2026/10/10
+ */
 import java.util.Scanner;
 public class Main{
     public static void main(String[] args){

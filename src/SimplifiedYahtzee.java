@@ -1,3 +1,8 @@
+/*
+    The class for the overall Simplified Yahtzee game that contains all instance variables, static methods, and instance methods that are required to make the game fully function and be able to run without errors also due to this class containing methods with input validation and error handling
+    By Richard Jiang
+    2026/10/10
+ */
 import java.util.ArrayList;
 import java.util.Scanner;
 //Game rules to full yahtzee game: https://officialgamerules.org/game-rules/yahtzee
