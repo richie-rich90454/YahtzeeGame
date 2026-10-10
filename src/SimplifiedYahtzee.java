@@ -107,7 +107,7 @@ public class SimplifiedYahtzee {
         }
     }
     public void playRound(SimplifiedYahtzee userPlayer, Scanner input, int round, int playerNumber){
-        SimplifiedYahtzee.printCharacterByCharacterWithNewLine("This is round "+round +" of the simplified Yahtzee game for player"+playerNumber+".");
+        SimplifiedYahtzee.printCharacterByCharacterWithNewLine("This is round "+round +" of the simplified Yahtzee game for player "+playerNumber+".");
         SimplifiedYahtzee.printCharacterByCharacterWithNewLine("Your total score till this point is "+userPlayer.getUserScore());
         userPlayer.rollAllDice();
         SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The three dice roll results you have this round are "+userPlayer.getAllDice());
@@ -148,7 +148,7 @@ public class SimplifiedYahtzee {
         int winnerScore=-1;
         boolean isTie=false;
         for (int i=1;i<=playerCount;i++){
-            SimplifiedYahtzee.printCharacterByCharacterWithNewLine("Player "+i+": "+players[i].getUserScore()+" (best round is "+ players[i].getBestRound()+" with a score of "+players[i].getBestRoundScore()+"(note: if two or more rounds had the same score, the latest round is printed here)");
+            SimplifiedYahtzee.printCharacterByCharacterWithNewLine("Player "+i+": "+players[i].getUserScore()+" (best round is "+ players[i].getBestRound()+" with a score of "+players[i].getBestRoundScore()+" (note: if two or more rounds had the same score, the latest round is printed here)");
             if (players[i].getUserScore()>=winnerScore){
                 if (!winners.isEmpty()){
                     isTie=true;
