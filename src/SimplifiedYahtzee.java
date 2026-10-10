@@ -41,18 +41,6 @@ public class SimplifiedYahtzee {
             return false;
         }
     }
-    //starting from 1 and ending at 3
-//    public boolean rollDice(String diceIndexString){
-//        int diceIndex=-1;
-//        //reference: https://stackoverflow.com/questions/35250163/what-happens-to-a-int-i-integer-parseintstring-when-there-are-no-integers-in
-//        try{
-//            diceIndex=Integer.parseInt(diceIndexString);
-//        }
-//        catch(NumberFormatException exception){
-//            return false;
-//        }
-//        return rollDice(diceIndex);
-//    }
     public String getAllDice(){
         return (diceRollsCurrent[0]+", "+diceRollsCurrent[1]+", "+diceRollsCurrent[2]);
     }
@@ -85,9 +73,6 @@ public class SimplifiedYahtzee {
             return "No dice match, so you earn a score of "+(Math.max(Math.max(diceRollsCurrent[0],diceRollsCurrent[1]), diceRollsCurrent[2]))+" (the maximum value of the three dice).";
         }
     }
-//    public int getParticularDiceValue(int diceIndex){
-//        return diceRollsCurrent[diceIndex];
-//    }
     public static void printCharacterByCharacterWithNewLine(String characters){
         printCharacterByCharacter(characters);
         System.out.println();
@@ -111,6 +96,7 @@ public class SimplifiedYahtzee {
         if (userDice.equals("")){
             return true;
         }
+        //reference: https://stackoverflow.com/questions/35250163/what-happens-to-a-int-i-integer-parseintstring-when-there-are-no-integers-in
         try{
             for (String currentDice: userDice.split(",")){
                 diceToKeep.add(Integer.parseInt(currentDice));
@@ -156,14 +142,6 @@ public class SimplifiedYahtzee {
         if (userRerollChoice.equals("yes")){
             for (int i=1;i<=2;i++){
                 userPlayer.handleUserReroll(input);
-//                SimplifiedYahtzee.printCharacterByCharacter("Please enter the index of the dice that you want to re-roll (between 1 and 3 inclusive): ");
-//                String userRerollIndex=input.nextLine().toLowerCase().trim();
-//                while (!userPlayer.rollDice(userRerollIndex)){
-//                    SimplifiedYahtzee.printCharacterByCharacter("Please enter a valid index between 1 and 3 inclusive: ");
-//                    userRerollIndex=input.nextLine().toLowerCase().trim();
-//                }
-//                SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The new rolled value is: "+userPlayer.getParticularDiceValue(Integer.parseInt(userRerollIndex)-1));//since it would definitely be an integer by this point that is valid there is no risk of runtime error here
-//                SimplifiedYahtzee.printCharacterByCharacterWithNewLine("The three dice roll results you have this round are "+userPlayer.getAllDice());
                 if (i==1){
                     SimplifiedYahtzee.printCharacterByCharacter("Do you still want a re-roll (enter yes or no)? ");
                     userRerollChoice=input.nextLine().toLowerCase().trim();
